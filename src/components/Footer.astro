@@ -1,0 +1,90 @@
+---
+import { navLinksFooter } from '../data/nav.ts';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="wrap">
+		<div class="footer-row">
+			<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
+			<ul class="footer-links">
+				{navLinksFooter.map((link) => (
+					<li><a href={link.href}>{link.label}</a></li>
+				))}
+			</ul>
+		</div>
+		<p class="footer-note">© {year} Chenzo Studio. Comunicación con estrategia.</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		padding: 40px 0;
+	}
+
+	.footer-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	.logo {
+		display: flex;
+		align-items: baseline;
+		gap: 5px;
+		text-decoration: none;
+	}
+
+	.logo .word,
+	.logo .sub {
+		font-family: 'Urbanist', 'Jost', sans-serif;
+		font-size: 18px;
+		letter-spacing: -0.01em;
+	}
+
+	.logo .word {
+		font-weight: 700;
+		color: var(--logo-word);
+	}
+
+	.logo .sub {
+		font-weight: 300;
+		color: var(--logo-sub);
+	}
+
+	.footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 28px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.footer-links a {
+		font-size: 13.5px;
+		color: var(--muted);
+		text-decoration: none;
+	}
+
+	.footer-links a:hover {
+		color: var(--brand);
+	}
+
+	.footer-note {
+		font-size: 12.5px;
+		color: var(--muted);
+		margin-top: 24px;
+	}
+
+	@media (max-width: 860px) {
+		.footer-row {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+		}
+	}
+</style>

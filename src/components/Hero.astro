@@ -1,0 +1,203 @@
+---
+const postCards = [
+	{ class: 'post-1', tag: 'Reel' },
+	{ class: 'post-2', tag: 'Carrusel' },
+	{ class: 'post-3', tag: 'Meta Ads' },
+];
+const WHATSAPP_TEXT = 'Hola!%20Quiero%20coordinar%20una%20llamada%20para%20conocer%20los%20servicios%20del%20estudio.';
+const WHATSAPP_URL = `https://wa.me/5491162184392?text=${WHATSAPP_TEXT}`;
+
+---
+
+<section class="hero" id="top">
+	<div class="wrap hero-grid">
+		<div>
+			<span class="eyebrow">Contenido &amp; Meta Ads</span>
+			<h1>Comunicación<br>con <em>estrategia</em>.</h1>
+			<p class="hero-lede">Planificamos, creamos y editamos contenido para marcas personales, organizaciones y comercios — e ideamos, analizamos y optimizamos campañas en Meta Ads. Contenido, redes y pauta, en un solo lugar.</p>
+			<div class="hero-actions">
+				<a class="btn btn-primary" href={WHATSAPP_URL}>Agendar una llamada</a>
+				<a class="btn btn-ghost" href="#servicios">Ver cómo trabajamos</a>
+			</div>
+		</div>
+		<div class="hero-visual" aria-hidden="true">
+			{postCards.map((card) => (
+				<div class={`post-card ${card.class}`}>
+					<span class="tag">{card.tag}</span>
+					<div class="dot-row"><span></span><span></span><span></span></div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding: 96px 0 88px;
+		border-top: none;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: 64px;
+		align-items: end;
+	}
+
+	.hero h1 {
+		font-size: clamp(40px, 5.4vw, 68px);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.015em;
+		margin-top: 22px;
+	}
+
+	.hero h1 em {
+		font-style: normal;
+		color: var(--brand);
+	}
+
+	.hero-lede {
+		margin-top: 26px;
+		max-width: 46ch;
+		font-size: 19px;
+		font-weight: 400;
+		color: var(--ink-soft);
+		line-height: 1.55;
+	}
+
+	.hero-actions {
+		margin-top: 36px;
+		display: flex;
+		gap: 14px;
+		flex-wrap: wrap;
+	}
+
+	.hero-visual {
+		position: relative;
+		height: 360px;
+	}
+
+	.post-card {
+		position: absolute;
+		width: 180px;
+		aspect-ratio: 1;
+		border-radius: 3px;
+		box-shadow: var(--shadow);
+		border: 1px solid var(--border);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 16px;
+	}
+
+	.post-card .tag {
+		font-size: 10px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	.post-card .dot-row {
+		display: flex;
+		gap: 6px;
+	}
+
+	.post-card .dot-row span {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+	}
+
+	.post-1 {
+		background: var(--brand);
+		color: #EAF0E5;
+		top: 0;
+		right: 60px;
+		transform: rotate(-4deg);
+		z-index: 3;
+	}
+
+	.post-1 .dot-row span {
+		background: rgba(234, 240, 229, 0.55);
+	}
+
+	.post-2 {
+		background: var(--bg-soft);
+		color: var(--brand-dark);
+		top: 70px;
+		right: 220px;
+		transform: rotate(3deg);
+		z-index: 2;
+	}
+
+	.post-2 .dot-row span {
+		background: var(--brand-light);
+	}
+
+	.post-3 {
+		background: var(--beige);
+		color: #1D3C07;
+		top: 150px;
+		right: 20px;
+		transform: rotate(6deg);
+		z-index: 1;
+	}
+
+	.post-3 .dot-row span {
+		background: rgba(29, 60, 7, 0.4);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.hero h1, .hero-lede, .hero-actions {
+			animation: rise .6s ease both;
+		}
+
+		.hero-lede {
+			animation-delay: .08s;
+		}
+
+		.hero-actions {
+			animation-delay: .16s;
+		}
+
+		@keyframes rise {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+	}
+
+	@media (max-width: 860px) {
+		.hero {
+			padding: 56px 0 48px;
+		}
+
+		.hero-grid {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.hero-visual {
+			height: 230px;
+		}
+
+		.post-card {
+			width: 124px;
+			padding: 14px;
+		}
+
+		.post-1 {
+			right: 16px;
+		}
+
+		.post-2 {
+			right: 120px;
+			top: 44px;
+		}
+
+		.post-3 {
+			right: 4px;
+			top: 110px;
+		}
+	}
+</style>

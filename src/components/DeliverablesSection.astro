@@ -1,0 +1,96 @@
+---
+const deliverables = [
+	{
+		title: 'Calendario de contenido',
+		description: 'Planificación mensual de temas, formatos y fechas clave.',
+	},
+	{
+		title: 'Guion, grabación y edición',
+		description: 'Contenido producido y editado, listo para publicar.',
+	},
+	{
+		title: 'Pauta en Meta Ads',
+		description: 'Configuración, segmentación y gestión de campañas en Instagram y Facebook.',
+	},
+	{
+		title: 'Análisis y optimización',
+		description: 'Lectura de resultados y ajuste continuo de estrategia y presupuesto.',
+	},
+];
+---
+
+<section id="incluye" class="deliverables">
+	<div class="wrap">
+		<div class="section-head">
+			<span class="eyebrow">Qué incluye</span>
+			<h2>Todo lo que necesita tu contenido para funcionar.</h2>
+		</div>
+		<div class="deliverables-grid">
+			{deliverables.map((item) => (
+				<div class="deliverable">
+					<span class="check">
+						<svg fill="none" viewBox="0 0 16 16"><path stroke="#f6f7f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m3 8.5 3 3 7-7"/></svg>
+					</span>
+					<div class="deliverable-body">
+						<h4>{item.title}</h4>
+						<p>{item.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.deliverables {
+		background: var(--bg-alt);
+	}
+
+	.deliverables-grid {
+		margin-top: 52px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px 48px;
+	}
+
+	.deliverable {
+		display: flex;
+		gap: 16px;
+		padding: 4px 0;
+	}
+
+	.deliverable .check {
+		flex: none;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background: var(--brand);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 2px;
+	}
+
+	.deliverable .check svg {
+		width: 11px;
+		height: 11px;
+	}
+
+	.deliverable-body h4 {
+		font-size: 16.5px;
+		font-weight: 700;
+	}
+
+	.deliverable-body p {
+		font-size: 14.5px;
+		color: var(--ink-soft);
+		margin-top: 4px;
+		max-width: 42ch;
+	}
+
+	@media (max-width: 860px) {
+		.deliverables-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
