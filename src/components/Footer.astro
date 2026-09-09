@@ -1,5 +1,5 @@
 ---
-import { navLinks } from '../data/nav.ts';
+import { navLinksFooter } from '../data/nav.ts';
 
 const year = new Date().getFullYear();
 ---
@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
 		<div class="footer-row">
 			<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
 			<ul class="footer-links">
-				{navLinks.map((link) => (
+				{navLinksFooter.map((link) => (
 					<li><a href={link.href}>{link.label}</a></li>
 				))}
 			</ul>

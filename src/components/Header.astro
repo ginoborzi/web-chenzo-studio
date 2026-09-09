@@ -1,12 +1,12 @@
 ---
-import { navLinks } from '../data/nav.ts';
+import { navLinksHeader } from '../data/nav.ts';
 ---
 
 <header class="nav">
 	<div class="nav-row">
-		<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
 		<ul class="nav-links">
-			{navLinks.map((link) => (
+			<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
+			{navLinksHeader.map((link) => (
 				<li><a href={link.href}>{link.label}</a></li>
 			))}
 		</ul>
@@ -14,11 +14,12 @@ import { navLinks } from '../data/nav.ts';
 			<span></span>
 		</button>
 		<div class="nav-cta">
-			<a class="btn btn-primary" href="#contacto">Hablemos</a>
+			<a class="btn btn-ghost" href="#contacto">Hablemos</a>
 		</div>
 	</div>
 	<nav class="nav-mobile-panel" id="nav-mobile-panel">
-		{navLinks.map((link) => (
+		<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
+		{navLinksHeader.map((link) => (
 			<a href={link.href}>{link.label}</a>
 		))}
 	</nav>
