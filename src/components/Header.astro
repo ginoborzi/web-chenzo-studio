@@ -1,0 +1,207 @@
+---
+import { navLinks } from '../data/nav.ts';
+---
+
+<header class="nav">
+	<div class="nav-row">
+		<a class="logo" href="#top"><span class="word">chenzo</span><span class="sub">studio</span></a>
+		<ul class="nav-links">
+			{navLinks.map((link) => (
+				<li><a href={link.href}>{link.label}</a></li>
+			))}
+		</ul>
+		<button class="nav-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-panel">
+			<span></span>
+		</button>
+		<div class="nav-cta">
+			<a class="btn btn-primary" href="#contacto">Hablemos</a>
+		</div>
+	</div>
+	<nav class="nav-mobile-panel" id="nav-mobile-panel">
+		{navLinks.map((link) => (
+			<a href={link.href}>{link.label}</a>
+		))}
+	</nav>
+</header>
+
+<style>
+	header.nav {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		background: color-mix(in srgb, var(--bg) 88%, transparent);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.nav-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 32px;
+		max-width: 1120px;
+		margin: 0 auto;
+	}
+
+	.logo {
+		display: flex;
+		align-items: baseline;
+		gap: 5px;
+		text-decoration: none;
+	}
+
+	.logo .word {
+		font-family: 'Urbanist', 'Jost', sans-serif;
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--logo-word);
+	}
+
+	.logo .sub {
+		font-family: 'Urbanist', 'Jost', sans-serif;
+		font-size: 22px;
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		color: var(--logo-sub);
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 36px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav-links a {
+		font-size: 14.5px;
+		font-weight: 400;
+		text-decoration: none;
+		color: var(--ink-soft);
+		transition: color .15s ease;
+	}
+
+	.nav-links a:hover {
+		color: var(--brand);
+	}
+
+	.nav-cta {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+	}
+
+	.nav-menu-toggle {
+		display: none;
+		flex: none;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.nav-menu-toggle span {
+		position: relative;
+		width: 19px;
+		height: 1.5px;
+		background: var(--ink);
+		flex: none;
+		transition: background .15s ease;
+	}
+
+	.nav-menu-toggle span::before,
+	.nav-menu-toggle span::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 19px;
+		height: 1.5px;
+		background: var(--ink);
+		transition: transform .2s ease, top .2s ease, opacity .2s ease;
+	}
+
+	.nav-menu-toggle span::before {
+		top: -6px;
+	}
+
+	.nav-menu-toggle span::after {
+		top: 6px;
+	}
+
+	.nav-menu-toggle[aria-expanded="true"] span {
+		background: transparent;
+	}
+
+	.nav-menu-toggle[aria-expanded="true"] span::before {
+		top: 0;
+		transform: rotate(45deg);
+	}
+
+	.nav-menu-toggle[aria-expanded="true"] span::after {
+		top: 0;
+		transform: rotate(-45deg);
+	}
+
+	.nav-mobile-panel {
+		display: none;
+		flex-direction: column;
+		border-top: 1px solid var(--border);
+		background: var(--bg);
+	}
+
+	.nav-mobile-panel.open {
+		display: flex;
+	}
+
+	.nav-mobile-panel a {
+		padding: 16px 32px;
+		font-size: 15px;
+		color: var(--ink-soft);
+		text-decoration: none;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.nav-mobile-panel a:hover {
+		color: var(--brand);
+	}
+
+	@media (max-width: 860px) {
+		.nav-row {
+			padding: 16px 20px;
+		}
+
+		.nav-links {
+			display: none;
+		}
+
+		.nav-menu-toggle {
+			display: flex;
+		}
+	}
+</style>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('.nav-menu-toggle');
+	const panel = document.getElementById('nav-mobile-panel');
+
+	if (toggle && panel) {
+		toggle.addEventListener('click', () => {
+			const willOpen = !panel.classList.contains('open');
+			panel.classList.toggle('open', willOpen);
+			toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+		});
+
+		panel.querySelectorAll('a').forEach((a) => {
+			a.addEventListener('click', () => {
+				panel.classList.remove('open');
+				toggle.setAttribute('aria-expanded', 'false');
+			});
+		});
+	}
+</script>
