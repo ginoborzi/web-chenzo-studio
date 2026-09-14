@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title?: string;
@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-	title = 'Chenzo Studio — Comunicación con estrategia',
-	description = 'Planificamos, creamos y editamos contenido para marcas personales, organizaciones y comercios — e ideamos, analizamos y optimizamos campañas en Meta Ads.',
+	title = "Chenzo Studio — Comunicación con estrategia",
+	description = "Planificamos, creamos y editamos contenido para marcas personales, organizaciones y comercios — e ideamos, analizamos y optimizamos campañas en Meta Ads.",
 } = Astro.props;
 ---
 
@@ -29,6 +29,23 @@ const {
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Urbanist:wght@300;400;700&display=swap"
 		/>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-NCKC8BXEZR"
+		></script>
+		{/* Google Analytics (solo en producción para no ensuciar métricas) */}
+		{import.meta.env.PROD && (
+		<>
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-NCKC8BXEZR"></script>
+			<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-NCKC8BXEZR');
+			</script>
+		</>
+		)}
 	</head>
 	<body>
 		<slot />
