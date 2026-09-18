@@ -1,47 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --bg: #F6F7F6;
-  --bg-alt: #EEE8DD;
-  --bg-soft: #EAF0E5;
-  --surface: #FFFFFF;
-  --ink: #141613;
-  --ink-soft: #4A4B48;
-  --muted: #8C8F8A;
-  --border: #D9DAD8;
-  --brand: #2B5B07;
-  --brand-dark: #1D3C07;
-  --brand-light: #63A630;
-  --beige: #C6B08B;
-  --on-brand: #F6F7F6;
-  --logo-word: #1D3C07;
-  --logo-sub: #8C8F8A;
-  --shadow: 0 1px 2px rgba(20, 22, 19, 0.04), 0 12px 32px -20px rgba(29, 60, 7, 0.35);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14180F;
-    --bg-alt: #1B2412;
-    --bg-soft: #1D3C07;
-    --surface: #1A1F14;
-    --ink: #F3F5F0;
-    --ink-soft: #D9DAD8;
-    --muted: #93968E;
-    --border: #2C351F;
-    --brand: #7FBD3E;
-    --brand-dark: #63A630;
-    --beige: #C6B08B;
-    --on-brand: #141613;
-    --logo-word: #F6F7F6;
-    --logo-sub: #63A630;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 20px 40px -24px rgba(0, 0, 0, 0.6);
-  }
-}
-
-:root[data-theme="dark"] {
   --bg: #14180F;
   --bg-alt: #1B2412;
   --bg-soft: #1D3C07;
@@ -51,7 +12,8 @@
   --muted: #93968E;
   --border: #2C351F;
   --brand: #7FBD3E;
-  --brand-dark: #63A630;
+  --brand-dark: #1D3C07;
+  --brand-light: #63A630;
   --beige: #C6B08B;
   --on-brand: #141613;
   --logo-word: #F6F7F6;
@@ -110,7 +72,7 @@ a {
 
 .eyebrow::before {
   content: "";
-  width: 16px;
+  width: 8px;
   height: 1px;
   background: var(--brand);
 }
